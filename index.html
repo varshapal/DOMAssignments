@@ -57,6 +57,23 @@
             //const name_deseralized = JSON.parse(localStorage.getItem('name'));
             //localStorage.setItem('email', email);
             //localStorage.setItem('phone', phonenumber);
+
+
+            //create delete button
+            var deleteBtn = document.createElement('button');
+
+            //append text node
+            //deleteBtn.appendChild(document.createTextNode('delete'));
+            deleteBtn.textContent = 'delete';
+
+            //append button to li
+            li.appendChild(deleteBtn);
+
+            //delete function
+            deleteBtn.addEventListener('click', ()=>{
+                itemList.removeChild(li);
+                localStorage.removeItem(obj.email);
+            })
         }
 
         
