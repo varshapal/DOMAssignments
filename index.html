@@ -10,9 +10,9 @@
         <label>Name</label>
         <input type="text" name="username" id="name">
         <label>Email</label>
-        <input type="email" name="email">
+        <input type="email" name="email" id="email">
         <label>Phone Number</label>
-        <input type="number" name="phonenumber">
+        <input type="number" name="phonenumber" id="phone">
         <button>Submit</button>
         <ul id="listOfItems">
         
@@ -62,16 +62,37 @@
             //create delete button
             var deleteBtn = document.createElement('button');
 
+            //create edit button
+            var editBtn = document.createElement('button');
+
             //append text node
             //deleteBtn.appendChild(document.createTextNode('delete'));
             deleteBtn.textContent = 'delete';
+            editBtn.textContent  = 'edit';
 
             //append button to li
             li.appendChild(deleteBtn);
+            li.appendChild(editBtn);
 
             //delete function
             deleteBtn.addEventListener('click', ()=>{
                 itemList.removeChild(li);
+                localStorage.removeItem(obj.email);
+            })
+
+            //edit function
+            editBtn.addEventListener('click', ()=>{
+                
+                //var info = localStorage.getItem(obj.email);
+                //console.log(info);
+                document.getElementById('name').value = obj.name;
+                document.getElementById('email').value = obj.email;
+                document.getElementById('phone').value = obj.phonenumber;
+                
+                //remove list
+                itemList.removeChild(li);
+
+                //remove item from local storage
                 localStorage.removeItem(obj.email);
             })
         }
